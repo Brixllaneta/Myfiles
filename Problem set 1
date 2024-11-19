@@ -1,0 +1,54 @@
+Problem Set 1: Personalized Table Creation and Relationship Setup
+
+1. DEFINE YOUR ENTITIES:
+   •Cellphone table:
+    cellphone_id (Primary Key)
+     cellphone_name VARCHAR(20)
+     cellphone_price NUMBER
+
+   Store Table:
+     store_id (Primary Key)
+    store_name VARCHAR(20)
+    cellphone_id NUMBER
+    address VARCHAR(30)
+    FOREIGN KEY(cellphone_id) REFERENCES cellphone(cellphone_id)
+)
+
+
+2. Enforce a Unique Constraint
+   - Unique constraints are applied on store_name  in STORE and cellphone_name in CELLPHONE
+
+3. EXAMPLE OUTPUT 
+
+CREATE TABLE CELLPHONE(
+cellphone_id NUMBER PRIMARY KEY,
+cellphone_name VARCHAR2(20),
+cellphone_price NUMBER
+);
+
+
+CREATE TABLE CELLPHONE_STORE(
+    store_id NUMBER PRIMARY KEY, 
+    store_name VARCHAR2(20),
+    cellphone_id NUMBER,
+    address VARCHAR2(30),
+    FOREIGN KEY(cellphone_id) REFERENCES cellphone(cellphone_id)
+)
+
+INSERT INTO CELLPHONE(cellphone_id,cellphone_name,cellphone_price)
+VALUES(1,'SAMSUNG',5000);
+
+INSERT INTO CELLPHONE(cellphone_id,cellphone_name,cellphone_price)
+VALUES(2,'REALME',8000);
+
+INSERT INTO CELLPHONE(cellphone_id,cellphone_name,cellphone_price)
+VALUES(3,'VIVO',9000);
+
+
+INSERT INTO CELLPHONE_STORE(store_id, store_name, cellphone_id, address) VALUES (5, 'tiktok',1,'manila');
+
+
+INSERT INTO CELLPHONE_STORE(store_id, store_name, cellphone_id, address) VALUES (10,'lazada',2,'legazpi');
+
+INSERT INTO CELLPHONE_STORE(store_id, store_name, cellphone_id, address) VALUES (15, 'shopee',3,'manila');
+
